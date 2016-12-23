@@ -1,0 +1,16 @@
+#theOSMMap{
+    width:100%;
+    height:700px;
+}
+#googleMap{
+    width:100%;
+    height:700px;
+}
+#wrapperMsg{
+    position: relative;
+}
+#msg{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+}
