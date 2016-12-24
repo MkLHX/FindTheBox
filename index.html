@@ -80,10 +80,10 @@
                 console.log('My latitude and longitude in initMap function : '+lat+' '+lon);
                 var uluru = {lat: lat, lng: lon};
                 var map = new google.maps.Map(document.getElementById('googleMap'), {
-                    zoom: 13,
+                    zoom: 12,
                     center: uluru
                 });
-                //console.log(map);
+                console.log(map);
 
                 var yourMarker = 'http://maps.google.com/mapfiles/kml/pal2/icon5.png';
                 var marker = new google.maps.Marker({
@@ -92,7 +92,8 @@
                     label: 'Vous êtes ici',
                     icon: yourMarker
                 });
-                //console.log(marker);
+                console.log(marker);
+
                 // Add some markers to the map.
                 var boxMarkers = 'http://maps.google.com/mapfiles/kml/pal2/icon13.png';
                 var markers = locations.map(function(location, i) {
@@ -101,42 +102,43 @@
                         icon : boxMarkers
                     });
                 });
+                console.log(markers);
 
                 // Add a marker clusterer to manage the markers.
                 var markerCluster = new MarkerClusterer(map, markers,
                         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
             }
-            var myZipCode = [];
+            var locations = [];
+            var labels=[];
             $.getJSON("http://freegeoip.net/json/?")
                     .done(function (getConnectionInfos) {
                         console.log(getConnectionInfos);
-                        for(var i = 0; i < getConnectionInfos.length; i++ ) {
-                            myZipCode.push({zip: getConnectionInfos[i].zip_code});
-                        }
-                        console.log(myZipCode);
+                        var myZipCode = getConnectionInfos.zip_code;
+                        var urlJson = "https://datanova.legroupe.laposte.fr/api/records/1.0/search/?dataset=laposte_boiterue&q="+myZipCode+"&rows=10&facet=lb_voie_ext&facet=lb_com&facet=co_insee_com&facet=co_postal&facet=lb_type_geo&facet=syst_proj_ini";
+                        $.getJSON(urlJson)
+                                .done(function (jsonDatas) {
+                                    console.log("json response loaded with succes!");
+                                    //console.log(jsonDatas);
+                                    for (var i = 0; i < jsonDatas.records.length; i++) {
+                                        locations.push({
+                                            lat: jsonDatas.records[i].fields.latlong[0],
+                                            lng: jsonDatas.records[i].fields.latlong[1]
+                                        });
+                                        labels.push({
+                                            lb_com: jsonDatas.records[i].fields.lb_com,
+                                            lb_voie_ext: jsonDatas.records[i].fields.lb_voie_ext
+                                        })
+                                    }
+                                    console.log(locations);
+                                    console.log(labels);
+                                })
+                                .fail(function (jsonDatas, textStatus, error) {
+                                    var err = textStatus + ", " + error;
+                                    console.log("JSON request Failed: " + err);
+                                });
+
                     }).fail(function(getConnectionInfos, textStatus, error) {
-                        var err = textStatus + ", " + error;
-                        console.log( "JSON request Failed: " + err );
-                    });
-            var locations = [];
-            var labels=[];
-            console.log(myZipCode);
-            var urlJson = "https://datanova.legroupe.laposte.fr/api/records/1.0/search/?dataset=laposte_boiterue&q="+myZipCode+"&rows=10&facet=lb_voie_ext&facet=lb_com&facet=co_insee_com&facet=co_postal&facet=lb_type_geo&facet=syst_proj_ini";
-            //console.log(urlJson);
-            //var urlJson = "laposte_boiterue.json";
-            $.getJSON(urlJson)
-                    .done(function(jsonDatas) {
-                        console.log( "json response loaded with succes!" );
-                        //console.log(jsonDatas);
-                        for(var i = 0; i < jsonDatas.records.length; i++ ){
-                            locations.push({lat: jsonDatas.records[i].fields.latlong[0], lng: jsonDatas.records[i].fields.latlong[1]});
-                            labels.push({lb_com: jsonDatas.records[i].fields.lb_com, lb_voie_ext: jsonDatas.records[i].fields.lb_voie_ext})
-                        }
-                        console.log(locations);
-                        console.log(labels);
-                    })
-                    .fail(function(jsonDatas, textStatus, error) {
                         var err = textStatus + ", " + error;
                         console.log( "JSON request Failed: " + err );
                     });
