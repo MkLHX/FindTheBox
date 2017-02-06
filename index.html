@@ -76,7 +76,6 @@
     </div>
     <script>
         $(function(){
-
             function bindInfoWindow(marker, map, infowindow, description) {
                 marker.addListener('click', function() {
                     infowindow.setContent(description);
@@ -193,7 +192,7 @@
                 }).delay(4000).fadeOut('slow');
             }
 
-            var locations=[];
+            var locations = [];
             var labels=[];
 
             $.getJSON("http://freegeoip.net/json/?")
@@ -215,6 +214,11 @@
                         $.getJSON(urlJson)
                                 .done(function (jsonDatas) {
                                     console.log('json response loaded with succes!',jsonDatas);
+                        var urlJson = "https://datanova.legroupe.laposte.fr/api/records/1.0/search/?dataset=laposte_boiterue&q="+myZipCode+"&rows=10&facet=lb_voie_ext&facet=lb_com&facet=co_insee_com&facet=co_postal&facet=lb_type_geo&facet=syst_proj_ini";
+                        $.getJSON(urlJson)
+                                .done(function (jsonDatas) {
+                                    console.log("json response loaded with succes!");
+                                    //console.log(jsonDatas);
                                     for (var i = 0; i < jsonDatas.records.length; i++) {
                                         locations.push({
                                             lat: jsonDatas.records[i].fields.latlong[0],
@@ -242,6 +246,7 @@
                 getPosition();
             });
         });
+    });
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKhUDaxsGSZHFcROsaw9zvrGvrUf_cpZw&callback=initMap">
