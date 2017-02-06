@@ -5,3 +5,12 @@
 //     draggable: true
 // });
 $('.button-collapse').sideNav();
+
+$(function(){
+
+    // Navigation
+    $('#bal, #tileBal').click(function(e){
+        e.preventDefault();
+        $("#content").load("bal.html");
+    });
+});
