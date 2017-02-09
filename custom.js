@@ -1,4 +1,4 @@
-$('.button-collapse').sideNav();
+// $('.button-collapse').sideNav();
 
 $(function(){
     //back to top button
