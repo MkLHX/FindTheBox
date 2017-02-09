@@ -23,12 +23,16 @@ a{
 #jumbotron{
     position: relative;
     height: 50vh;
+    background-color: rgba(255,255,255,0.6);
+}
+#jumbotron:hover {
+    /*background-color: transparent;*/
 }
 #jumBody h1{
     margin-top: 8vh;
 }
 #jumBody{
-    background-color: rgba(255,255,255,0.8);
+
 }
 #jumBody img{
     position: absolute;
@@ -36,8 +40,8 @@ a{
     /*left: 0;*/
     /*margin: 0 auto;*/
     z-index: -10;
-    width: 50vw;
-    height: 50vh;
+    width: 40vw;
+    height: 40vh;
 }
 #googleMap{
     width:95%;
@@ -67,6 +71,7 @@ a{
 .tile span{
     position: absolute;
     top: 45%;
+
     margin: 0 auto;
     text-align: center;
     font-size: 2em;
