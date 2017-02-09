@@ -14,13 +14,34 @@ a{
     text-decoration: none;
     color: inherit;
 }
-.brand-logo>i{
-    /*padding: 5px;*/
-    /*margin: 5px auto;*/
+.brand-logo>img{
+    width: 3.5vw;
+    height: auto;
+    padding: 5px;
+    margin: 0 auto;
+}
+#jumbotron{
+    position: relative;
+    height: 50vh;
+}
+#jumBody h1{
+    margin-top: 8vh;
+}
+#jumBody{
+    background-color: rgba(255,255,255,0.8);
+}
+#jumBody img{
+    position: absolute;
+    top: 2%;
+    /*left: 0;*/
+    /*margin: 0 auto;*/
+    z-index: -10;
+    width: 50vw;
+    height: 50vh;
 }
 #googleMap{
-    width:90%;
-    height: 110vh;
+    width:95%;
+    height: 90vh;
     margin: 0 auto;
 }
 #wrapperMsg{
@@ -35,8 +56,6 @@ a{
     text-align: center;
 }
 .tile{
-    min-width: 15%;
-    min-height: 15%;
     width: auto;
     height: 45vh;
     border-bottom: 1px solid grey;
@@ -45,17 +64,30 @@ a{
     background-color: rgba(255,255,255,0.8);
     position: relative;
 }
+.tile span{
+    position: absolute;
+    top: 45%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 2em;
+    z-index: +2;
+}
 .tile img{
     z-index: -10;
     position: absolute;
     top:0;
     left:0;
-    max-height: 90%;
+    padding: 10px;
     margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
 .tile i{
     padding-top: 17vh;
 }
 .tile:hover{
     background-color: transparent;
+}
+.tile:hover span{
+    display: none;
 }
