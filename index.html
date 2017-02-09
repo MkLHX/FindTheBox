@@ -3,59 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <title>FindTheBox! - Trouvez la boite aux lettres de rue la plus proche de vous! - Mickael Lehoux</title>
+    <title>FindTheBox! - Trouvez la boite la plus proche de vous! - Mickael Lehoux</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="materialize/css/materialize.min.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="custom.css">
     <script src="jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="custom.js"></script>
 </head>
 <body>
-    <!--<a href="#" data-activates="slide-out" class="btn button-collapse">Side nav demo</a>-->
-    <!--<ul id="slide-out" class="side-nav">-->
-        <!--<li><div class="userView">-->
-            <!--<div class="background">-->
-                <!--<img src="images/office.jpg">-->
-            <!--</div>-->
-            <!--<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>-->
-            <!--<a href="#!name"><span class="white-text name">John Doe</span></a>-->
-            <!--<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>-->
-        <!--</div></li>-->
-        <!--<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>-->
-        <!--<li><a href="#!">Second Link</a></li>-->
-        <!--<li><div class="divider"></div></li>-->
-        <!--<li><a class="subheader">Subheader</a></li>-->
-        <!--<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>-->
-    <!--</ul>-->
-    <!--<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>-->
-    <div id="jumbotron" class="conainer">
-        <div class="row">
-            <div class="col s12 text-center">
-                <h1>Bienvenue sur FindTheBox !</h1>
-                <h2>Trouvez facilement la boite à vos besoins</h2>
+    <a href="index.html">
+        <div id="jumbotron" class="conainer">
+            <div class="row">
+                <div id="jumBody" class="col s12 text-center">
+                    <img src="icons/open-cardboard-box.svg" alt="">
+                    <h1>Bienvenue sur FindTheBox !</h1>
+                    <h2>Trouvez facilement la boite à vos besoins</h2>
+                </div>
             </div>
         </div>
-    </div>
-
+    </a>
     <nav class="teal accent-4">
         <div class="nav-wrapper">
             <a href="index.html" class="brand-logo left">
-                <!--<i class="large material-icons">markunread_mailbox</i>-->
-                <i class="fa fa-archive fa-2x" aria-hidden="true"></i>
+                <img src="icons/home-interface.svg" alt="">
             </a>
             <a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a id="bal" href="#">Boites aux Lettres de rue</a></li>
-                <!--<li><a href="#">Container à bouteilles</a></li>-->
-                <!--<li><a href="#">Container à vêtements</a></li>-->
+                <li><a class="bal" href="#">Boites aux Lettres de rues</a></li>
+                <li><a class="vet" href="#">Conteneurs à vêtements</a></li>
+                <li><a class="bottle" href="#">Conteneurs à bouteilles</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="#">Boites aux Lettres de rue</a></li>
-                <!--<li><a href="#">Container à bouteilles</a></li>-->
-                <!--<li><a href="#">Container à vêtements</a></li>-->
+                <li><a class="bal" href="#">Boites aux Lettres de rues</a></li>
+                <li><a class="vet" href="#">Conteneurs à vêtements</a></li>
+                <li><a class="bottle" href="#">Conteneurs à bouteilles</a></li>
             </ul>
         </div>
     </nav>
@@ -73,43 +57,45 @@
                 </div>
                 <div class="row">
                     <div class="col s12 l10 offset-l1">
-                        <div id="content" class="text-center">
-                            <h3>FindTheBox c'est quoi?</h3>
-                            <h4>FindtheBox c'est une web app qui permet de géolocaliser les boites aux lettres de rue, les conteneurs à vêtements ou encore les conteneurs à verre et les différents points de collectes.</h4>
-                        </div>
-                        <div class="text-center">
-                            <a id="tileBal" href="#">
-                                <div class="col s12 l3">
-                                    <div class="tile text-center">
-                                        <i class="large material-icons">markunread_mailbox</i>
-                                        <img class="responsive-img" src="images/bal.png" alt="">
+                        <div id="content">
+                            <div class="text-center">
+                                <h3>FindTheBox c'est quoi?</h3>
+                                <h4>FindtheBox c'est une web app qui permet de géolocaliser les boites aux lettres de rue, les conteneurs à vêtements ou encore les conteneurs à verre et les différents points de collectes.</h4>
+                            </div>
+                            <div class="tiles">
+                                <a id="tileBal" href="#">
+                                    <div class="col s12 l4">
+                                        <div class="tile">
+                                            <span class="">Boites aux lettres de rues</span>
+                                            <img class="responsive-img" src="icons/mailbox.svg" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="col s12 l3">
-                                    <div class="tile text-center">
-                                        <i class="large material-icons">markunread_mailbox</i>
-                                        <img class="responsive-img" src="images/bal.png" alt="">
+                                </a>
+                                <a id="tileVet" href="#">
+                                    <div class="col s12 l4">
+                                        <div class="tile">
+                                            <span class="">Conteneurs à vêtemens</span>
+                                            <img class="responsive-img" src="icons/recycle-shirt.svg" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="col s12 l3">
-                                    <div class="tile text-center">
-                                        <i class="large material-icons">markunread_mailbox</i>
-                                        <img class="responsive-img" src="images/bal.png" alt="">
+                                </a>
+                                <a id="tileBottle" href="#">
+                                    <div class="col s12 l4">
+                                        <div class="tile">
+                                            <span class="text-center">Conteneurs à bouteilles</span>
+                                            <img class="responsive-img" src="icons/signs.svg" alt="">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="">
-                                <div class="col s12 l3">
-                                    <div class="tile text-center">
-                                        <i class="large material-icons">markunread_mailbox</i>
-                                        <img class="responsive-img" src="images/bal.png" alt="">
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                                <!--<a href="">-->
+                                    <!--<div class="col s12 l3">-->
+                                        <!--<div class="tile">-->
+                                            <!--<span class="text-center">Boites aux lettres de rues</span>-->
+                                            <!--<img class="responsive-img" src="images/bal.png" alt="">-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            </div>
                         </div>
                     </div>
                 </div>
