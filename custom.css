@@ -36,9 +36,10 @@ a{
     height: 40vh;
 }
 #googleMap{
-    width:95%;
+    width:100%;
     height: 90vh;
     margin: 0 auto;
+    padding: 0;
 }
 #wrapperMsg{
     position: relative;

@@ -31,7 +31,7 @@ $(function(){
             map.setCenter(marker.getPosition());
 
 
-            var content = "Ville : " + loan +  '</h3>' + " Adresse : " + add;
+            var content = "<img class='responsive-img' src='icons/mailbox.svg' style='width: 15%;'></br>Ville : " + loan +  '</br>' + "Adresse : " + add + '</br>' + "Latitude : " + lat+ '</br>' + "Longitude : " + long;
 
             var infowindow = new google.maps.InfoWindow();
 
